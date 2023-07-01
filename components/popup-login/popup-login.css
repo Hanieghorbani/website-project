@@ -1,0 +1,133 @@
+.popup-login{
+    position: absolute;
+    top: 20px;
+    left: 30%;
+    width: 40%;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 5px;
+    z-index: 1200;
+}
+
+
+.title-popup{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(240, 240, 240);
+    padding: 0 20px;
+    font-size: 18px;
+    color: rgba(124, 124, 124, 0.603);
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    margin-bottom: -20px;
+    height: 10%;
+}
+
+.title-popup > i{
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.inputs-box{
+    padding: 20px;
+}
+
+.inputs-box> p{
+    position: relative;
+    color: rgb(57, 57, 57);
+    font-size: smaller;
+    margin-top: 15px;
+    margin-bottom: 0;
+}
+
+.pass-input,
+.userName-input{
+    outline: none;
+    padding: 5px;
+    border: none;
+    width: 96%;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.pass-input::placeholder,
+.userName-input::placeholder{
+    font-size: smaller;
+}
+
+.fa-user,
+.fa-lock,
+.fa-check-circle,
+.fa-exclamation-circle{
+    position: absolute;
+    color: var(--color);
+    font-weight: bold;
+    top: 31px;
+    left: 3%;
+}
+
+.fa-exclamation-circle{
+    color: rgb(224, 84, 84);
+}
+
+small{
+    color: rgb(224, 84, 84);
+    font-size: 10px;
+    display: none;
+}
+
+.checkbox-forget{
+    margin-top: -20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    padding: 20px;
+}
+
+.checkBox-input{
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.forget-pass{
+    margin-left: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.enter-btn{
+    width: 30%;
+    padding: 5px 0;
+    font-family: vazir;
+    background-color: var(--color);
+    border: none;
+    margin: 20px;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-top: -25px;
+    cursor: pointer;
+}
+
+.register{
+    font-size: 10px;
+    margin: 20px;
+    margin-top: -10px;
+    color: rgb(57, 57, 57);
+}
+
+.register > a{
+    text-decoration: none;
+    color: rgb(57, 57, 57);
+    font-weight: bold;
+}
+
+
+@font-face {
+    font-family: vazir;
+    src: url(Vazir.woff);
+}
