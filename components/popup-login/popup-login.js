@@ -1,3 +1,4 @@
+import { styling,loginBtn } from "../../script.js"
 const template = document.createElement("template")
 template.innerHTML = `
 <link rel="stylesheet" href="all.css" />
@@ -47,14 +48,29 @@ class PopupLogin extends HTMLElement {
         userIcon.className == "fa fa-check-circle" &&
         userIcon.className == "fa fa-check-circle"
       ) {
-        alert("شما با موفقیت وارد شدید")
+        alert('شما با موفقیت وارد حساب کاربری خود شدید')
         userNameInput.value = ""
         passInput.value = ""
+        styling('none','visible','none')
+        loginBtn.innerHTML = `
+        <i class="fa-light fa-user"></i>حساب کاربری`
+      }
+      else{
+        evalName()
+        evalPass()
       }
     })
 
     userNameInput.addEventListener("blur", () => {
-      let valEmailPatt = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+     evalName()
+    })
+
+    passInput.addEventListener("blur", () => {
+      evalPass()
+    })
+
+    function evalName() {
+       let valEmailPatt = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       evaluationInputs(
         userNameInput,
         userIcon,
@@ -63,9 +79,9 @@ class PopupLogin extends HTMLElement {
         0,
         !valEmailPatt.test(userNameInput.value.trim())
       )
-    })
+    }
 
-    passInput.addEventListener("blur", () => {
+    function evalPass() {
       evaluationInputs(
         passInput,
         passIcon,
@@ -74,7 +90,7 @@ class PopupLogin extends HTMLElement {
         1,
         passInput.value.length < 8
       )
-    })
+    }
 
     function evaluationInputs(
       input,
