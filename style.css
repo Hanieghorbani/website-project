@@ -12,9 +12,9 @@
 }
 
 body {
-    padding: 30px 1px;
     font-family: vazir;
     direction: rtl;
+    overflow-x: hidden;
 }
 
 .overlay{
@@ -34,6 +34,108 @@ body {
 .container{
     height: 100%;
 }
+.jsPic{
+    padding: 20px 40px;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+/* 
+.nav{
+    width: 32%;
+    background-color: rgb(44, 44, 44);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    transition:  0.5s ease;
+    padding: 20px;
+    font-family: vazir;
+}
+
+.contentNav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: rgb(170, 170, 170);
+    font-size: 15px;
+}
+
+
+.searchBox{
+  position: relative;
+}
+
+.searchBox >input{
+    background-color: rgb(19, 19, 19);
+    font-family: vazir;
+    padding: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    color: rgb(170, 170, 170);
+    border-radius:5px;
+}
+
+.searchBox i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.cart{
+    margin: 35px 20px;
+    cursor: pointer;
+}
+
+.cart > i{
+    margin-left: 10px;
+}
+
+.contentNav > ul{
+    list-style: none;
+}
+
+.container ul li{
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.coursesMenu:hover{
+  cursor: default;
+}
+
+.title-courses{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropDownMenu{
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    margin-right: 5px;
+    padding-right: 20px;
+    border-right: 1px solid rgb(85, 85, 85);
+    display: none;
+}
+
+.dropDownMenu span{
+    margin-top: 5px;
+    cursor: pointer;
+} */
+
+
+
+
+
+
+
+
+
+
 
 @font-face {
     font-family: vazir;

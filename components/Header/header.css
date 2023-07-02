@@ -1,13 +1,12 @@
-:root{
+:root {
     --color: #a5d7ae;
     --color2: #5f8d4e;
     --background2: #a4be7b;
-    --background:  rgb(211, 211, 211);
+    --background: rgb(211, 211, 211);
 }
 
 .header-container {
-    position: absolute;
-    direction: rtl;
+    padding: 10px 20px;
     display: flex;
     align-items: center;
     width: 100%;
@@ -15,12 +14,13 @@
     list-style: none;
     box-shadow: 1px 1px 3px 1px rgb(230, 230, 230);
     position: relative;
+    transition: transform 0.5s ease;
 }
 .ulHeader {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    width: 45%;
+    width: 40%;
     list-style: none;
 }
 
@@ -37,7 +37,8 @@
 }
 
 .logo {
-    width: 13%;
+    width: 100px;
+    
 }
 
 .loginBtn {
@@ -48,37 +49,37 @@
     padding: 7px;
     border-radius: 3px;
     position: absolute;
-    left: 15px;
+    left: 60px;
     cursor: pointer;
 }
 
 .fa-user-lock,
-.fa-user{
+.fa-user {
     margin-left: 7px;
 }
 
-.coursesMenu{
-   position: relative;
+.coursesMenu {
+    position: relative;
 }
 
-.fa-chevron-down{
-    padding:6px;
+.fa-chevron-down {
+    padding: 6px;
 }
 
-.coursesMenu:hover{
+.coursesMenu:hover {
     cursor: default;
 }
 
-.title-courses{
+.title-courses {
     cursor: pointer;
 }
 
-.fa-triangle{
+.fa-triangle {
     position: absolute;
-    top:-11px;
+    top: -11px;
     right: 30px;
     font-size: 14px;
-    color:var(--background);
+    color: var(--background);
 }
 
 .dropDownMenu {
@@ -91,7 +92,7 @@
     padding: 10px;
     font-size: 14px;
     width: 200px;
-    background-color:var(--background);
+    background-color: var(--background);
     border-radius: 7px;
 }
 
@@ -107,7 +108,7 @@
     font-size: 10px;
 }
 
-.dropDownMenu >span:hover{
+.dropDownMenu > span:hover {
     box-shadow: 1px 1px 3px 1px var(--color);
 }
 
@@ -121,6 +122,38 @@
     width: 30px;
     height: 30px;
 }
+
+.menu-icons {
+    font-size: 20px;
+    display: none;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.menu-icons > i{
+    position: absolute;
+    
+}
+
+.menu-icons > .fa-times {
+    display: none;
+}
+
+@media screen and (max-width: 900px) {
+    .ulHeader {
+        display: none;
+    }
+    .loginBtn {
+        display: none;
+    }
+    .menu-icons {
+        display: block;
+    }
+}
+
 
 @font-face {
     font-family: vazir;

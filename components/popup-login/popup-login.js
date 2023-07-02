@@ -1,4 +1,4 @@
-import { styling,loginBtn } from "../../script.js"
+import { styling, loginBtn } from "../../script.js"
 const template = document.createElement("template")
 template.innerHTML = `
 <link rel="stylesheet" href="all.css" />
@@ -42,35 +42,39 @@ class PopupLogin extends HTMLElement {
     let userIcon = this.shadowRoot.querySelector(".fa-user")
     let passIcon = this.shadowRoot.querySelector(".fa-lock")
     let errAllert = this.shadowRoot.querySelectorAll("small")
+    let closeBtn = this.shadowRoot.querySelector(".fa-close")
 
     submitBtn.addEventListener("click", () => {
       if (
         userIcon.className == "fa fa-check-circle" &&
         userIcon.className == "fa fa-check-circle"
       ) {
-        alert('شما با موفقیت وارد حساب کاربری خود شدید')
+        alert("شما با موفقیت وارد حساب کاربری خود شدید")
         userNameInput.value = ""
         passInput.value = ""
-        styling('none','visible','none')
+        styling("none", "visible", "none")
         loginBtn.innerHTML = `
         <i class="fa-light fa-user"></i>حساب کاربری`
-      }
-      else{
+      } else {
         evalName()
         evalPass()
       }
     })
 
     userNameInput.addEventListener("blur", () => {
-     evalName()
+      evalName()
     })
 
     passInput.addEventListener("blur", () => {
       evalPass()
     })
 
+    closeBtn.addEventListener("click", () => {
+      styling("none", "visible", "none")
+    })
+
     function evalName() {
-       let valEmailPatt = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+      let valEmailPatt = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
       evaluationInputs(
         userNameInput,
         userIcon,

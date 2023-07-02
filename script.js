@@ -1,36 +1,18 @@
 import { Header } from "../components/Header/header.js"
 import { PopupLogin } from "../components/popup-login/popup-login.js"
+import { HambergurMenu } from "../components/hambergur-menu/hambergur-menu.js"
 
 window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
+window.customElements.define("hambergur-menu", HambergurMenu)
 
-let loginBtn = document
-  .querySelector("header-site")
-  .shadowRoot.querySelector(".loginBtn")
-let popupDiv = document
-  .querySelector("login-site")
-  .shadowRoot.querySelector(".popup-login")
-let closePopupBtn = document
-  .querySelector("login-site")
-  .shadowRoot.querySelector(".fa-close")
-let enterBtn = document
-  .querySelector("login-site")
-  .shadowRoot.querySelector(".enter-btn")
-let headerDiv = document
-  .querySelector("header-site")
-  .shadowRoot.querySelector(".header-container")
-let overlay = document.querySelector(".overlay")
-let body = document.querySelector("body")
-
-loginBtn.addEventListener("click", (e) => {
-  console.log();
-  if (e.target.innerText == 'ورود و ثبت نام') {
-      styling("block", "hidden", "block")
-  }
-})
-closePopupBtn.addEventListener("click", () => {
-  styling("none", "visible", "none")
-})
+const loginBtn = document.querySelector("header-site").shadowRoot.querySelector(".loginBtn")
+const popupDiv = document.querySelector("login-site").shadowRoot.querySelector(".popup-login")
+const overlay = document.querySelector(".overlay")
+const body = document.querySelector("body")
+const nav = document.querySelector("hambergur-menu").shadowRoot.querySelector('.nav')
+const jsPic = document.querySelector(".jsPic")
+const headerContainer = document.querySelector("header-site").shadowRoot.querySelector(".header-container")
 
  function styling(popupDivS, bodyS, overlayS) {
   popupDiv.style.display = popupDivS
@@ -38,6 +20,6 @@ closePopupBtn.addEventListener("click", () => {
   overlay.style.display = overlayS
 }
 
-export{styling , loginBtn}
+export{styling , loginBtn, nav ,jsPic}
 
 
