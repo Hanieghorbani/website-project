@@ -33,6 +33,7 @@ body {
 
 .container{
     height: 100%;
+    width: 100%;
 }
 .jsPic{
     padding: 20px 40px;
@@ -46,6 +47,7 @@ body {
     color: rgb(171, 171, 171);
     direction: ltr;
     transition: transform 0.5s ease;
+    padding: 0 30px;
 }
 
 .top-bar-row{
@@ -87,6 +89,12 @@ body {
     right: -10px;
     font-size: 10px;
     color: rgb(59, 59, 249);
+}
+
+.contents{
+    height: 200vh;
+    background-color: var(--color);
+    margin: 50px;
 }
 
 

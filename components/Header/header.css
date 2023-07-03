@@ -16,6 +16,7 @@
     position: relative;
     transition: transform 0.5s ease;
     z-index: 800;
+    background-color: white;
 }
 .ulHeader {
     display: flex;

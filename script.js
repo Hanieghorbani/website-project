@@ -47,6 +47,16 @@ loginTopBar.addEventListener('click',()=>{
   styling("block", "hidden", "block")
 })
 
+window,addEventListener('scroll',()=>{
+  if (window.scrollY >= headerContainer.offsetHeight) {
+    headerContainer.style.position = 'fixed'
+    headerContainer.style.top = '0'
+  }else{
+    headerContainer.style.position = 'relative'
+    topBar.style.marginLeft = '-40px'
+  }
+})
+
 
 
 export{styling , loginBtn,nav,hambergurStyle}
