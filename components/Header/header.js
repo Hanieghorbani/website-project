@@ -1,10 +1,10 @@
-import { styling, nav, jsPic } from "../../script.js"
+import { styling, nav,hambergurStyle } from "../../script.js"
 const template = document.createElement("template")
 template.innerHTML = `
 <link rel="stylesheet" href="all.css" />
 <link rel="stylesheet" href="components/Header/header.css">
 <div class='header-container'>
-  <img class="logo" src="logo.png" />
+        <img class="logo" src="logo.png" />
         <ul class="ulHeader">
           <li>صفحه اصلی</li>
           <li class="coursesMenu">
@@ -62,16 +62,7 @@ class Header extends HTMLElement {
 
     closeBtn.addEventListener("click", () => {
       hambergurStyle('-100%',0,'block','none')
-
     })
-
-    function hambergurStyle(navTrf,widthNav,barsIcon,closeIcon) {
-      nav.style.transform = `translateX(${navTrf})`
-      headerContainer.style.transform = `translate(${widthNav},0)`
-      jsPic.style.transform = `translate(${widthNav},0)`
-      barsBtn.style.display = barsIcon
-      closeBtn.style.display = closeIcon
-    }
   }
 }
 

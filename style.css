@@ -23,7 +23,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 1000;
     display: none;
     pointer-events: auto;
     background-color: rgba(53, 53, 53, 0.77);
@@ -38,103 +38,66 @@ body {
     padding: 20px 40px;
     width: 100%;
     transition: all 0.5s ease;
-}
-/* 
-.nav{
-    width: 32%;
-    background-color: rgb(44, 44, 44);
-    position: fixed;
-    left: 0;
-    top: 0;
-    height: 100%;
-    transform: translateX(-100%);
-    transition:  0.5s ease;
-    padding: 20px;
-    font-family: vazir;
+    z-index: 700;
 }
 
-.contentNav{
-    width: 100%;
+.top-bar{
+    background-color: black;
+    color: rgb(171, 171, 171);
+    direction: ltr;
+    transition: transform 0.5s ease;
+}
+
+.top-bar-row{
     display: flex;
-    flex-direction: column;
-    color: rgb(170, 170, 170);
-    font-size: 15px;
 }
 
-
-.searchBox{
-  position: relative;
+.top-bar-items{
+    display: block;
 }
 
-.searchBox >input{
-    background-color: rgb(19, 19, 19);
-    font-family: vazir;
-    padding: 5px;
-    outline: none;
-    border: none;
-    width: 100%;
-    color: rgb(170, 170, 170);
-    border-radius:5px;
-}
-
-.searchBox i{
-    position: absolute;
-    top: 10px;
-    left: 10px;
-}
-
-.cart{
-    margin: 35px 20px;
-    cursor: pointer;
-}
-
-.cart > i{
-    margin-left: 10px;
-}
-
-.contentNav > ul{
-    list-style: none;
-}
-
-.container ul li{
-    margin-bottom: 15px;
-    cursor: pointer;
-}
-
-.coursesMenu:hover{
-  cursor: default;
-}
-
-.title-courses{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.dropDownMenu{
-    display: flex;
-    flex-direction: column;
-    font-size: 13px;
-    margin-right: 5px;
-    padding-right: 20px;
-    border-right: 1px solid rgb(85, 85, 85);
+.top-bar-items-mobile{
     display: none;
 }
 
-.dropDownMenu span{
-    margin-top: 5px;
+.top-bar-items ul,
+.top-bar-items-mobile ul{
+    display: flex;
+    list-style: none;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-left: 50px;
+}
+
+.top-bar-items ul li,
+.top-bar-items-mobile ul li{
+    margin-right: 30px;
     cursor: pointer;
-} */
+}
+
+.cart{
+    position: relative;
+}
+
+.numCart{
+    position: absolute;
+    bottom: 8px;
+    right: -10px;
+    font-size: 10px;
+    color: rgb(59, 59, 249);
+}
 
 
-
-
-
-
-
-
-
+@media screen and (max-width: 900px) {
+    .top-bar-items{
+        display: none;
+    }
+    .top-bar-items-mobile{
+        display: block;
+    }
+}
 
 
 @font-face {
