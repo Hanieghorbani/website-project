@@ -33,6 +33,10 @@ const searchBtn = document.querySelector(".fa-search")
 const closeSearchBtn = document.querySelector(".fa-close")
 const inputSearch = headerContainer.querySelector(".inputSearch")
 const microphoneBtn = headerContainer.querySelector(".fa-microphone")
+const dayElem = document.querySelector(".dayElem")
+const hourElem = document.querySelector(".hourElem")
+const minElem = document.querySelector(".minElem")
+const secElem = document.querySelector(".secElem")
 
 function styling(popupDivS, bodyS, overlayS) {
   popupDiv.style.display = popupDivS
@@ -43,7 +47,7 @@ function styling(popupDivS, bodyS, overlayS) {
 function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
   nav.style.transform = `translateX(${navTrf})`
   headerContainer.style.transform = `translate(${widthNav},0)`
-  jsPic.style.transform = `translate(${widthNav},0)`
+  jsPic.parentElement.style.transform = `translate(${widthNav},0)`
   topBar.style.transform = `translate(${widthNav},0)`
   barsBtn.style.display = barsIcon
   closeBtn.style.display = closeIcon
@@ -66,8 +70,7 @@ loginTopBar.addEventListener("click", () => {
   styling("block", "hidden", "block")
 })
 
-window,
-  addEventListener("scroll", () => {
+window.addEventListener("scroll", () => {
     if (window.scrollY >= headerContainer.offsetHeight) {
       headerContainer.style.position = "fixed"
       headerContainer.style.top = "0"
@@ -122,5 +125,26 @@ function searchStyle(btnCl, btnSr, hdrI, hdrSB) {
   headerContainer.querySelector(".header-items").style.display = hdrI
   headerContainer.querySelector(".header-searchBox").style.display = hdrSB
 }
+
+function calCountdown() {
+  let publishDay = '4 august 2023'
+  let newPubDay = new Date(publishDay)
+  let nowDay = new Date()
+  let seconds = (newPubDay - nowDay)/1000
+  let totalDay = Math.floor(seconds/3600/24)
+  let totalHour = Math.floor(seconds/3600)%24
+  let totalMin = Math.floor(seconds/60)%60
+  let totalSec = Math.floor(seconds%60)
+
+  dayElem.innerText = totalDay
+  hourElem.innerText = totalHour
+  minElem.innerText = totalMin
+  secElem.innerText = totalSec
+}
+
+calCountdown()
+setInterval(() => {
+  calCountdown()
+}, 1000);
 
 export { styling, loginBtn, nav, hambergurStyle }

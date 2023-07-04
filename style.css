@@ -104,6 +104,8 @@ body {
 .imgBox{
     position: relative;
     display: 100%;
+   transition: transform 0.5s ease;
+ 
 }
 
 .countdown-container{
@@ -128,6 +130,7 @@ body {
 }
 
 .countdown-items{
+    direction: ltr;
     display: flex;
     justify-content: center;
     align-items: center;
