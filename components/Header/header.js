@@ -1,10 +1,12 @@
-import { styling, nav,hambergurStyle } from "../../script.js"
+import { styling, nav, hambergurStyle } from "../../script.js"
 const template = document.createElement("template")
 template.innerHTML = `
 <link rel="stylesheet" href="all.css" />
 <link rel="stylesheet" href="components/Header/header.css">
 <div class='header-container'>
-        <img class="logo" src="logo.png" />
+   <div class="header-row">
+      <div class="header-items">
+      <img class="logo" src="logo.png" />
         <ul class="ulHeader">
           <li>صفحه اصلی</li>
           <li class="coursesMenu">
@@ -24,9 +26,20 @@ template.innerHTML = `
         <button class="loginBtn">
           <i class="fa-light fa-user-lock"></i>ورود و ثبت نام
         </button>
-       <div class="menu-icons"><i class="fa fa-bars"></i>
-      <i class="fa fa-times"></i></div>
+   </div> 
+   <div class="header-items-mobile"> 
+         <img class="logo" src="logo.png" />
+         <div class="menu-icons"><i class="fa fa-bars"></i>
+           <i class="fa fa-times"></i>
+         </div>
+    </div> 
+    <div class="header-searchBox"> 
+      <input placeholder="جستجوی دوره، استاد، مطالب و..." class="inputSearch"/>
+      <i class="fa fa-search"></i>
+    </div> 
+   
 
+   </div>
  </div>
 `
 
@@ -57,11 +70,16 @@ class Header extends HTMLElement {
       }
     })
     barsBtn.addEventListener("click", () => {
-      hambergurStyle(0,window.getComputedStyle(nav).getPropertyValue("width"),'none','block')
+      hambergurStyle(
+        0,
+        window.getComputedStyle(nav).getPropertyValue("width"),
+        "none",
+        "block"
+      )
     })
 
     closeBtn.addEventListener("click", () => {
-      hambergurStyle('-100%',0,'block','none')
+      hambergurStyle("-100%", 0, "block", "none")
     })
   }
 }

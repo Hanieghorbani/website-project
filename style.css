@@ -97,6 +97,14 @@ body {
     margin: 50px;
 }
 
+.icon-topBar{
+
+}
+
+.fa-close{
+    display: none;
+}
+
 
 @media screen and (max-width: 900px) {
     .top-bar-items{

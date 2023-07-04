@@ -17,6 +17,8 @@ const barsBtn = document.querySelector("header-site").shadowRoot.querySelector("
 const closeBtn = document.querySelector("header-site").shadowRoot.querySelector(".fa-times")
 const loginTopBar = document.querySelector(".fa-user-circle")
 const topBar = document.querySelector(".top-bar")
+const searchBtn = document.querySelector(".fa-search")
+const closeSearchBtn = document.querySelector(".fa-close")
 
 
 
@@ -38,8 +40,13 @@ function hambergurStyle(navTrf,widthNav,barsIcon,closeIcon) {
 
 window.addEventListener('resize',()=>{
   let widthBody = getComputedStyle(body).getPropertyValue("width").substring(0,7)
-  if (widthBody > 900) {
+  if (widthBody >= 900) {
+    hambergurStyle('-100%',0,'none','none')
+    searchStyle('none','block','flex','none')
+
+  }else{
     hambergurStyle('-100%',0,'block','none')
+    searchStyle('block','block','none','none')
   }
 })
 
@@ -57,8 +64,20 @@ window,addEventListener('scroll',()=>{
   }
 })
 
+searchBtn.addEventListener('click',()=>{
+  searchStyle('block','none','none','flex')
+})
+
+closeSearchBtn.addEventListener('click',()=>{
+  searchStyle('none','block','flex','none')
+})
+
+function searchStyle(btnCl,btnSr,hdrI,hdrSB) {
+  closeSearchBtn.style.display = btnCl
+  searchBtn.style.display = btnSr
+  headerContainer.querySelector('.header-items').style.display = hdrI
+  headerContainer.querySelector('.header-searchBox').style.display = hdrSB
+}
 
 
 export{styling , loginBtn,nav,hambergurStyle}
-
-
