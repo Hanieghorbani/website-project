@@ -97,14 +97,58 @@ body {
     margin: 50px;
 }
 
-.icon-topBar{
-
-}
-
 .fa-close{
     display: none;
 }
 
+.imgBox{
+    position: relative;
+    display: 100%;
+}
+
+.countdown-container{
+    color: white;
+    text-shadow: 2px 2px gray;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 10%;
+    right: 50%;
+    transform: translate(50%,50%);
+}
+
+.countdown-container h1{
+    width: 200%;
+    font-size: 30px;
+    display: block;
+    text-align: center;
+}
+
+.countdown-items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
+.countdown-items div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:20px;
+}
+
+.countdown-items div p{
+    font-size: 50px;
+}
+
+.countdown-items div span{
+    font-size: 25px;
+}
 
 @media screen and (max-width: 900px) {
     .top-bar-items{
@@ -112,6 +156,19 @@ body {
     }
     .top-bar-items-mobile{
         display: block;
+    }
+    .countdown-container{
+        top: 6%;
+        width: 30%;
+    }
+    .countdown-container h1{
+        font-size: 16px;
+    }
+    .countdown-items div p{
+       font-size: 20px;
+    }
+    .countdown-items div span{
+        font-size: 13px;
     }
 }
 

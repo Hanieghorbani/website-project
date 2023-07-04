@@ -110,7 +110,9 @@ function searchRecognition() {
     console.log("صدایی دریافت نشد !")
   })
   recognition.addEventListener("error", (err) => {
-    console.log(err)
+    alert('به اینترنت دسترسی ندارید!')
+    microphoneBtn.style.animation = 'doing 1s ease'
+
   })
 }
 
