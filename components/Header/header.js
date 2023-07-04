@@ -35,10 +35,11 @@ template.innerHTML = `
     </div> 
     <div class="header-searchBox"> 
       <input placeholder="جستجوی دوره، استاد، مطالب و..." class="inputSearch"/>
-      <i class="fa fa-search"></i>
+      <div class="icons-searchBox">
+        <i class="fa fa-search"></i>
+        <i class="fa fa-microphone"></i>
+      </div>
     </div> 
-   
-
    </div>
  </div>
 `

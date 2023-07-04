@@ -6,29 +6,41 @@ window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
 
-const loginBtn = document.querySelector("header-site").shadowRoot.querySelector(".loginBtn")
-const popupDiv = document.querySelector("login-site").shadowRoot.querySelector(".popup-login")
+const loginBtn = document
+  .querySelector("header-site")
+  .shadowRoot.querySelector(".loginBtn")
+const popupDiv = document
+  .querySelector("login-site")
+  .shadowRoot.querySelector(".popup-login")
 const overlay = document.querySelector(".overlay")
 const body = document.querySelector("body")
-const nav = document.querySelector("hambergur-menu").shadowRoot.querySelector('.nav')
+const nav = document
+  .querySelector("hambergur-menu")
+  .shadowRoot.querySelector(".nav")
 const jsPic = document.querySelector(".jsPic")
-const headerContainer = document.querySelector("header-site").shadowRoot.querySelector(".header-container")
-const barsBtn = document.querySelector("header-site").shadowRoot.querySelector(".fa-bars")
-const closeBtn = document.querySelector("header-site").shadowRoot.querySelector(".fa-times")
+const headerContainer = document
+  .querySelector("header-site")
+  .shadowRoot.querySelector(".header-container")
+const barsBtn = document
+  .querySelector("header-site")
+  .shadowRoot.querySelector(".fa-bars")
+const closeBtn = document
+  .querySelector("header-site")
+  .shadowRoot.querySelector(".fa-times")
 const loginTopBar = document.querySelector(".fa-user-circle")
 const topBar = document.querySelector(".top-bar")
 const searchBtn = document.querySelector(".fa-search")
 const closeSearchBtn = document.querySelector(".fa-close")
+const inputSearch = headerContainer.querySelector(".inputSearch")
+const microphoneBtn = headerContainer.querySelector(".fa-microphone")
 
-
-
- function styling(popupDivS, bodyS, overlayS) {
+function styling(popupDivS, bodyS, overlayS) {
   popupDiv.style.display = popupDivS
   body.style.overflow = bodyS
   overlay.style.display = overlayS
 }
 
-function hambergurStyle(navTrf,widthNav,barsIcon,closeIcon) {
+function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
   nav.style.transform = `translateX(${navTrf})`
   headerContainer.style.transform = `translate(${widthNav},0)`
   jsPic.style.transform = `translate(${widthNav},0)`
@@ -37,47 +49,76 @@ function hambergurStyle(navTrf,widthNav,barsIcon,closeIcon) {
   closeBtn.style.display = closeIcon
 }
 
-
-window.addEventListener('resize',()=>{
-  let widthBody = getComputedStyle(body).getPropertyValue("width").substring(0,7)
+window.addEventListener("resize", () => {
+  let widthBody = getComputedStyle(body)
+    .getPropertyValue("width")
+    .substring(0, 7)
   if (widthBody >= 900) {
-    hambergurStyle('-100%',0,'none','none')
-    searchStyle('none','block','flex','none')
-
-  }else{
-    hambergurStyle('-100%',0,'block','none')
-    searchStyle('block','block','none','none')
+    hambergurStyle("-100%", 0, "none", "none")
+    searchStyle("none", "block", "flex", "none")
+  } else {
+    hambergurStyle("-100%", 0, "block", "none")
+    searchStyle("block", "block", "none", "none")
   }
 })
 
-loginTopBar.addEventListener('click',()=>{
+loginTopBar.addEventListener("click", () => {
   styling("block", "hidden", "block")
 })
 
-window,addEventListener('scroll',()=>{
-  if (window.scrollY >= headerContainer.offsetHeight) {
-    headerContainer.style.position = 'fixed'
-    headerContainer.style.top = '0'
-  }else{
-    headerContainer.style.position = 'relative'
-    topBar.style.marginLeft = '-40px'
-  }
+window,
+  addEventListener("scroll", () => {
+    if (window.scrollY >= headerContainer.offsetHeight) {
+      headerContainer.style.position = "fixed"
+      headerContainer.style.top = "0"
+    } else {
+      headerContainer.style.position = "relative"
+      topBar.style.marginLeft = "-40px"
+    }
+  })
+
+searchBtn.addEventListener("click", () => {
+  searchStyle("block", "none", "none", "flex")
+  microphoneBtn.addEventListener("click", () => {
+    microphoneBtn.style.animation = 'doing 1s ease infinite'
+    searchRecognition()
+  })
 })
 
-searchBtn.addEventListener('click',()=>{
-  searchStyle('block','none','none','flex')
+closeSearchBtn.addEventListener("click", () => {
+  searchStyle("none", "block", "flex", "none")
 })
 
-closeSearchBtn.addEventListener('click',()=>{
-  searchStyle('none','block','flex','none')
-})
+function searchRecognition() {
+  let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+  let recognition = new SpeechRecognition()
+  recognition.lang = "fa-IR"
+  recognition.interimResults = true
+  recognition.start()
+  recognition.addEventListener("result", (e) => {
+    let transcript = Array.from(e.results)
+      .map((res) => res[0])
+      .map((res) => res.transcript)
+      .join("")
+    if (e.results[0].isFinal) {
+      inputSearch.value = transcript
+      microphoneBtn.style.animation = 'doing 1s ease'
+    }
+  })
 
-function searchStyle(btnCl,btnSr,hdrI,hdrSB) {
-  closeSearchBtn.style.display = btnCl
-  searchBtn.style.display = btnSr
-  headerContainer.querySelector('.header-items').style.display = hdrI
-  headerContainer.querySelector('.header-searchBox').style.display = hdrSB
+  recognition.addEventListener("nomatch", () => {
+    console.log("صدایی دریافت نشد !")
+  })
+  recognition.addEventListener("error", (err) => {
+    console.log(err)
+  })
 }
 
+function searchStyle(btnCl, btnSr, hdrI, hdrSB) {
+  closeSearchBtn.style.display = btnCl
+  searchBtn.style.display = btnSr
+  headerContainer.querySelector(".header-items").style.display = hdrI
+  headerContainer.querySelector(".header-searchBox").style.display = hdrSB
+}
 
-export{styling , loginBtn,nav,hambergurStyle}
+export { styling, loginBtn, nav, hambergurStyle }
