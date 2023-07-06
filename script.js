@@ -6,6 +6,7 @@ window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
 
+
 const loginBtn = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".loginBtn")
@@ -37,6 +38,8 @@ const dayElem = document.querySelector(".dayElem")
 const hourElem = document.querySelector(".hourElem")
 const minElem = document.querySelector(".minElem")
 const secElem = document.querySelector(".secElem")
+const contents = document.querySelector(".contents")
+
 
 function styling(popupDivS, bodyS, overlayS) {
   popupDiv.style.display = popupDivS
@@ -49,6 +52,7 @@ function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
   headerContainer.style.transform = `translate(${widthNav},0)`
   jsPic.parentElement.style.transform = `translate(${widthNav},0)`
   topBar.style.transform = `translate(${widthNav},0)`
+  contents.style.transform = `translate(${widthNav},0)`
   barsBtn.style.display = barsIcon
   closeBtn.style.display = closeIcon
 }
@@ -146,5 +150,9 @@ calCountdown()
 setInterval(() => {
   calCountdown()
 }, 1000);
+
+window.addEventListener('click',(e)=>{
+  console.log(e.target);
+})
 
 export { styling, loginBtn, nav, hambergurStyle }

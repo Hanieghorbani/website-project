@@ -11,13 +11,17 @@
     --background: rgb(211, 211, 211);
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: vazir;
     direction: rtl;
     overflow-x: hidden;
 }
 
-.overlay{
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -27,22 +31,22 @@ body {
     display: none;
     pointer-events: auto;
     background-color: rgba(53, 53, 53, 0.77);
-    transform: translate(0,0);
+    transform: translate(0, 0);
     transition: all 0.5s;
 }
 
-.container{
+.container {
     height: 100%;
     width: 100%;
 }
-.jsPic{
+.jsPic {
     padding: 20px 40px;
     width: 100%;
     transition: all 0.5s ease;
     z-index: 700;
 }
 
-.top-bar{
+.top-bar {
     background-color: black;
     color: rgb(171, 171, 171);
     direction: ltr;
@@ -50,20 +54,20 @@ body {
     padding: 0 30px;
 }
 
-.top-bar-row{
+.top-bar-row {
     display: flex;
 }
 
-.top-bar-items{
+.top-bar-items {
     display: block;
 }
 
-.top-bar-items-mobile{
+.top-bar-items-mobile {
     display: none;
 }
 
 .top-bar-items ul,
-.top-bar-items-mobile ul{
+.top-bar-items-mobile ul {
     display: flex;
     list-style: none;
     margin: 10px;
@@ -74,16 +78,16 @@ body {
 }
 
 .top-bar-items ul li,
-.top-bar-items-mobile ul li{
+.top-bar-items-mobile ul li {
     margin-right: 30px;
     cursor: pointer;
 }
 
-.cart{
+.cart {
     position: relative;
 }
 
-.numCart{
+.numCart {
     position: absolute;
     bottom: 8px;
     right: -10px;
@@ -91,24 +95,18 @@ body {
     color: rgb(59, 59, 249);
 }
 
-.contents{
-    height: 200vh;
-    background-color: var(--color);
-    margin: 50px;
-}
 
-.fa-close{
+.fa-close {
     display: none;
 }
 
-.imgBox{
+.imgBox {
     position: relative;
     display: 100%;
-   transition: transform 0.5s ease;
- 
+    transition: transform 0.5s ease;
 }
 
-.countdown-container{
+.countdown-container {
     color: white;
     text-shadow: 2px 2px gray;
     width: 100%;
@@ -119,17 +117,17 @@ body {
     position: absolute;
     top: 10%;
     right: 50%;
-    transform: translate(50%,50%);
+    transform: translate(50%, 50%);
 }
 
-.countdown-container h1{
+.countdown-container h1 {
     width: 200%;
     font-size: 30px;
     display: block;
     text-align: center;
 }
 
-.countdown-items{
+.countdown-items {
     direction: ltr;
     display: flex;
     justify-content: center;
@@ -137,44 +135,98 @@ body {
     width: 30%;
 }
 
-.countdown-items div{
+.countdown-items div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin:20px;
+    margin: 20px;
 }
 
-.countdown-items div p{
+.countdown-items div p {
     font-size: 50px;
 }
 
-.countdown-items div span{
+.countdown-items div span {
     font-size: 25px;
 }
 
+.contents {
+    height: 200vh;
+    margin: 50px;
+    transition: transform 0.5s ease;
+}
+
+/* برای دوره های پیشنهادی */
+
+.sugs-courses-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.header-sugs-courses {
+    width: 60%;
+    border-top: 4px dotted rgb(74, 74, 74);
+    position: relative;
+    color: rgb(74, 74, 74);
+}
+
+.header-sugs-courses span {
+    position: absolute;
+    background-color: white;
+    padding: 0 20px;
+    top: -5px;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.sugs-courses-items {
+    /* border: 1px solid red; */
+    margin-top: 40px;
+    width: 90%;
+    height: 160px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sugs-item {
+    width: 17%;
+    height: 100%;
+    background-color: pink;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+.sugs-item:hover{
+       box-shadow: 1px 1px 4px 1px gray;
+}
+
 @media screen and (max-width: 900px) {
-    .top-bar-items{
+    .top-bar-items {
         display: none;
     }
-    .top-bar-items-mobile{
+    .top-bar-items-mobile {
         display: block;
     }
-    .countdown-container{
+    .countdown-container {
         top: 6%;
         width: 30%;
     }
-    .countdown-container h1{
+    .countdown-container h1 {
         font-size: 16px;
     }
-    .countdown-items div p{
-       font-size: 20px;
+    .countdown-items div p {
+        font-size: 20px;
     }
-    .countdown-items div span{
+    .countdown-items div span {
         font-size: 13px;
     }
 }
-
 
 @font-face {
     font-family: vazir;
