@@ -9,6 +9,8 @@
     --color2: #5f8d4e;
     --background2: #a4be7b;
     --background: rgb(211, 211, 211);
+
+    --color-gray :rgb(74, 74, 74);
 }
 
 html {
@@ -169,9 +171,9 @@ body {
 
 .header-sugs-courses {
     width: 60%;
-    border-top: 4px dotted rgb(74, 74, 74);
+    border-top: 4px dotted var(--color-gray);
     position: relative;
-    color: rgb(74, 74, 74);
+    color: var(--color-gray);
 }
 
 .header-sugs-courses span {
@@ -187,23 +189,80 @@ body {
     /* border: 1px solid red; */
     margin-top: 40px;
     width: 90%;
-    height: 160px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .sugs-item {
-    width: 17%;
+    width: 22%;
     height: 100%;
-    background-color: pink;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 7px;
     border: 1px solid gray;
+    color: var(--color-gray);
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
+.sugs-item img{
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.sugs-icons-box{
+  position: absolute;
+  color: white;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  top: 10px;
+  right: 10px;
+  font-size: 15px;
+}
+
+.sugs-icons-box i{
+    margin-top: 2px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: rgba(200, 200, 200, 0.336);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.sugs-icons-box i:hover{
+    background-color: white;
+    color: var(--color-gray);
+}
+
+.sugs-courses-title{
+    font-size: small;
+    margin: 6px;
+}
+
+.sugs-courses-teacher{
+    font-size: small;
+    margin: 5px 10px;
+    text-align: left;
+}
+
+.sugs-courses-infos{
+    font-size: small;
+    border-top: 1px solid rgb(203, 203, 203);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    direction: ltr;
+}
+
+
+
 .sugs-item:hover{
-       box-shadow: 1px 1px 4px 1px gray;
+    box-shadow: 1px 1px 4px 1px gray;
 }
 
 @media screen and (max-width: 900px) {
@@ -226,8 +285,15 @@ body {
     .countdown-items div span {
         font-size: 13px;
     }
+    .sugs-icons-box i{
+        font-size: 12px;
+        width: 20px;
+        height: 20px;
+    }
+    .sugs-courses-title {
+        font-size: 11px;
+    }
 }
-
 @font-face {
     font-family: vazir;
     src: url(Vazir.woff);
