@@ -71,16 +71,19 @@ class Header extends HTMLElement {
       }
     })
     barsBtn.addEventListener("click", () => {
+      console.log(Number(window.getComputedStyle(nav).getPropertyValue("width").substring(0,6))+40,
+      );
       hambergurStyle(
         0,
-        window.getComputedStyle(nav).getPropertyValue("width"),
+        Number(window.getComputedStyle(nav).getPropertyValue("width").substring(0,6))+40,
         "none",
-        "block"
+        "block",
+        '40px'
       )
     })
 
     closeBtn.addEventListener("click", () => {
-      hambergurStyle("-100%", 0, "block", "none")
+      hambergurStyle("-100%", 0, "block", "none",0)
     })
   }
 }

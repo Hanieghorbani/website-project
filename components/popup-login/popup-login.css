@@ -126,6 +126,33 @@ small{
     font-weight: bold;
 }
 
+@media screen and (max-width: 900px) {
+    .popup-login{
+        top: 32px;
+        left: 5%;
+        width: 90%;
+    }
+    .title-popup{
+        font-size: 17px;
+    }
+    .inputs-box{
+        font-size: 13px;
+    }
+
+    .inputs-box p i{
+        top: 30px;
+        left: 10px;
+    }
+    .checkbox-forget{
+        margin-top: -25px;
+        font-size: 11px;
+        align-items: center;
+        margin-bottom: -16px;
+    }
+    .forget-pass{
+        margin-left: 0;
+    }
+}
 
 @font-face {
     font-family: vazir;

@@ -52,7 +52,7 @@ class PopupLogin extends HTMLElement {
         alert("شما با موفقیت وارد حساب کاربری خود شدید")
         userNameInput.value = ""
         passInput.value = ""
-        styling("none", "visible", "none")
+        styling("none","none",'scroll')
         loginBtn.innerHTML = `
         <i class="fa-light fa-user"></i>حساب کاربری`
       } else {
@@ -70,7 +70,7 @@ class PopupLogin extends HTMLElement {
     })
 
     closeBtn.addEventListener("click", () => {
-      styling("none", "visible", "none")
+      styling("none", "none",'scroll')
     })
 
     function evalName() {

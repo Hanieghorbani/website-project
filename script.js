@@ -1,10 +1,12 @@
 import { Header } from "../components/Header/header.js"
 import { PopupLogin } from "../components/popup-login/popup-login.js"
 import { HambergurMenu } from "../components/hambergur-menu/hambergur-menu.js"
+import { SugsCourses } from "../components/sugs-courses/sugs-courses.js"
 
 window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
+window.customElements.define("sug-item", SugsCourses)
 
 
 const loginBtn = document
@@ -39,19 +41,20 @@ const hourElem = document.querySelector(".hourElem")
 const minElem = document.querySelector(".minElem")
 const secElem = document.querySelector(".secElem")
 const contents = document.querySelector(".contents")
+const sugsCoursesItems = document.querySelector(".sugs-courses-items")
 
 
-function styling(popupDivS, bodyS, overlayS) {
+function styling(popupDivS, overlayS,overflow) {
   popupDiv.style.display = popupDivS
-  body.style.overflow = bodyS
   overlay.style.display = overlayS
+  document.querySelector('html').style.overflow = overflow
 }
 
-function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
+function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon ,padd) {
   nav.style.transform = `translateX(${navTrf})`
-  headerContainer.style.transform = `translate(${widthNav},0)`
-  jsPic.parentElement.style.transform = `translate(${widthNav},0)`
-  topBar.style.transform = `translate(${widthNav},0)`
+  headerContainer.style.transform = `translate(${widthNav}px,0)`
+  jsPic.parentElement.style.transform = `translate(${widthNav}px,0)`
+  topBar.style.transform = `translate(${widthNav}px,0)`
   contents.style.transform = `translate(${widthNav},0)`
   barsBtn.style.display = barsIcon
   closeBtn.style.display = closeIcon
@@ -62,16 +65,16 @@ window.addEventListener("resize", () => {
     .getPropertyValue("width")
     .substring(0, 7)
   if (widthBody >= 900) {
-    hambergurStyle("-100%", 0, "none", "none")
+    hambergurStyle("-100%", 0, "none", "none",0)
     searchStyle("none", "block", "flex", "none")
   } else {
-    hambergurStyle("-100%", 0, "block", "none")
+    hambergurStyle("-100%", 0, "block", "none",'40px')
     searchStyle("block", "block", "none", "none")
   }
 })
 
 loginTopBar.addEventListener("click", () => {
-  styling("block", "hidden", "block")
+  styling("block", "block",'hidden')
 })
 
 window.addEventListener("scroll", () => {
@@ -80,10 +83,14 @@ window.addEventListener("scroll", () => {
       headerContainer.style.top = "0"
     } else {
       headerContainer.style.position = "relative"
-      topBar.style.marginLeft = "-40px"
+      // topBar.style.marginLeft = "-40px"
     }
-  })
-
+    let height = window.getComputedStyle(sugsCoursesItems).getPropertyValue('height')
+    height = Number(height.match(/\d+/))
+  if (sugsCoursesItems.getBoundingClientRect().top > window.scrollY+window.innerHeight-(height/2)) {
+    sugsCoursesItems.style.animation = 'show 0.9s forwards'
+  }
+})
 searchBtn.addEventListener("click", () => {
   searchStyle("block", "none", "none", "flex")
   microphoneBtn.addEventListener("click", () => {
