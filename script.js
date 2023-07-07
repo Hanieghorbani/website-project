@@ -2,11 +2,13 @@ import { Header } from "../components/Header/header.js"
 import { PopupLogin } from "../components/popup-login/popup-login.js"
 import { HambergurMenu } from "../components/hambergur-menu/hambergur-menu.js"
 import { SugsCourses } from "../components/sugs-courses/sugs-courses.js"
+import { CartItem } from "../components/cart-items/cart-item.js"
 
 window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
 window.customElements.define("sug-item", SugsCourses)
+window.customElements.define("cart-item", CartItem)
 
 const loginBtn = document
   .querySelector("header-site")
@@ -71,11 +73,6 @@ window.addEventListener("resize", () => {
     hambergurStyle("-100%", 0, "block", "none", "40px")
     searchStyle("block", "block", "none", "none")
   }
-  if (window.scrollY > 200) {
-    backToTopBtn.style.display = "flex"
-  } else {
-    backToTopBtn.style.display = "none"
-  }
 })
 
 loginTopBar.addEventListener("click", () => {
@@ -110,8 +107,6 @@ window.addEventListener("scroll", () => {
 
   if (window.scrollY > 200) {
     backToTopBtn.style.display = "flex"
-    backToTopBtn.style.position = 'foxed'
-    backToTopBtn.style.bottom = '50px'
 
   } else {
     backToTopBtn.style.display = "none"
