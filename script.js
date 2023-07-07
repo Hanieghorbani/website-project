@@ -42,6 +42,8 @@ const minElem = document.querySelector(".minElem")
 const secElem = document.querySelector(".secElem")
 const contents = document.querySelector(".contents")
 const sugsCoursesItems = document.querySelector(".sugs-courses-items")
+const newCoursesItems = document.querySelector(".new-courses-items")
+const backToTopBtn = document.querySelector(".fa-chevron-up")
 
 
 function styling(popupDivS, overlayS,overflow) {
@@ -50,12 +52,12 @@ function styling(popupDivS, overlayS,overflow) {
   document.querySelector('html').style.overflow = overflow
 }
 
-function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon ,padd) {
+function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
   nav.style.transform = `translateX(${navTrf})`
   headerContainer.style.transform = `translate(${widthNav}px,0)`
   jsPic.parentElement.style.transform = `translate(${widthNav}px,0)`
   topBar.style.transform = `translate(${widthNav}px,0)`
-  contents.style.transform = `translate(${widthNav},0)`
+  contents.style.transform = `translate(${widthNav}px,0)`
   barsBtn.style.display = barsIcon
   closeBtn.style.display = closeIcon
 }
@@ -83,12 +85,22 @@ window.addEventListener("scroll", () => {
       headerContainer.style.top = "0"
     } else {
       headerContainer.style.position = "relative"
-      // topBar.style.marginLeft = "-40px"
     }
     let height = window.getComputedStyle(sugsCoursesItems).getPropertyValue('height')
     height = Number(height.match(/\d+/))
-  if (sugsCoursesItems.getBoundingClientRect().top > window.scrollY+window.innerHeight-(height/2)) {
-    sugsCoursesItems.style.animation = 'show 0.9s forwards'
+  if (sugsCoursesItems.getBoundingClientRect().top < window.scrollY+window.innerHeight-(height) && sugsCoursesItems.style.opacity != 1) {
+    sugsCoursesItems.style.animation = 'show 1s forwards'
+  }
+  if (newCoursesItems.getBoundingClientRect().top+150 < window.scrollY+window.innerHeight-(height) && newCoursesItems.style.opacity != 1) {
+    newCoursesItems.style.animation = 'show 1s forwards'
+  }
+
+  if (window.scrollY > 200) {
+    if (backToTopBtn.style.display != 'flex') {
+      backToTopBtn.style.display = 'flex'
+    }
+  }else{
+    backToTopBtn.style.display = 'none'
   }
 })
 searchBtn.addEventListener("click", () => {
@@ -102,6 +114,11 @@ searchBtn.addEventListener("click", () => {
 closeSearchBtn.addEventListener("click", () => {
   searchStyle("none", "block", "flex", "none")
 })
+
+backToTopBtn.addEventListener('click',()=>{
+  window.scrollTo({top:0,behavior:'smooth'})
+})
+
 
 function searchRecognition() {
   let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition

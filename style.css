@@ -161,15 +161,18 @@ body {
 
 /* برای دوره های پیشنهادی */
 
-.sugs-courses-container {
+.sugs-courses-container,
+.newest-courses-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-bottom: 130px;
 }
 
-.header-sugs-courses {
+.header-sugs-courses,
+.header-new-courses {
     width: 60%;
     border-top: 4px dotted var(--color-gray);
     position: relative;
@@ -177,7 +180,8 @@ body {
     margin: auto;
 }
 
-.header-sugs-courses span {
+.header-sugs-courses span,
+.header-new-courses span {
     position: absolute;
     background-color: white;
     padding: 0 20px;
@@ -186,7 +190,8 @@ body {
     transform: translate(-50%,-50%);
 }
 
-.sugs-courses-items {
+.sugs-courses-items,
+.new-courses-items {
     margin-top: 40px;
     width: 90%;
     display: flex;
@@ -202,9 +207,25 @@ sug-item{
     width: 22%;
 }
 
+.fa-chevron-up{
+    font-size: 20px;
+    background-color: gray;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    cursor: pointer;
+    position: fixed;
+    left: 20px;
+    bottom: 50px;
+}
+
 @keyframes show {
     0%{
-            opacity: 0;
+        opacity: 0;
     transform: translateX(-120%);
     }
     80%{
@@ -228,8 +249,8 @@ sug-item{
         margin-left: -12px;
     }
     .countdown-container {
-        top: 0;
-        width: 50%;
+        top: 26px;
+        width: 90%;
         text-shadow: 1px 0px gray;
     }
     .countdown-container h1 {

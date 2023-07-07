@@ -58,7 +58,6 @@ class Header extends HTMLElement {
     const loginBtn = this.shadowRoot.querySelector(".loginBtn")
     const barsBtn = this.shadowRoot.querySelector(".fa-bars")
     const closeBtn = this.shadowRoot.querySelector(".fa-times")
-    const headerContainer = this.shadowRoot.querySelector(".header-container")
     coursesMenu.addEventListener("mouseenter", () => {
       dropDownMenu.style.display = "flex"
     })
@@ -67,7 +66,7 @@ class Header extends HTMLElement {
     })
     loginBtn.addEventListener("click", (e) => {
       if (e.target.innerText == "ورود و ثبت نام") {
-        styling("block", "hidden", "block")
+        styling("block", "block", "hidden")
       }
     })
     barsBtn.addEventListener("click", () => {
