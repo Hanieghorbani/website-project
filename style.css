@@ -14,13 +14,13 @@
 }
 
 html {
-    overflow-x: hidden;
+    overflow-X: hidden;
 }
 
 body {
     font-family: vazir;
     direction: rtl;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .overlay {
@@ -157,6 +157,7 @@ body {
     height: 200vh;
     margin: 50px;
     transition: transform 0.5s ease;
+    position: relative;
 }
 
 /* برای دوره های پیشنهادی */
@@ -254,18 +255,19 @@ sug-item{
         text-shadow: 1px 0px gray;
     }
     .countdown-container h1 {
-        font-size: 12px;
+        font-size: 20px;
     }
     .countdown-items div{
         width: 8%;
     }
     .countdown-items div p {
-        font-size: 15px;
+        font-size: 30px;
     }
     .countdown-items div span {
         font-size: 10px;
     }
-    .header-sugs-courses span{
+    .header-sugs-courses span,
+    .header-new-courses span{
         font-size: small;
     }
     sug-item{
@@ -274,21 +276,36 @@ sug-item{
 }
 
 @media screen and (max-width: 600px){
+
+    .countdown-container h1 {
+        font-size: 14px;
+    }
+    .countdown-items div{
+        width: 8%;
+    }
+    .countdown-items div p {
+        font-size: 15px;
+    }
+
     sug-item{
         width: 90%;
     }
-    .header-sugs-courses{
+    .header-sugs-courses,
+    .header-new-courses{
         width: 80%;
         border-width: 1px;
     }
 
-    .header-sugs-courses span{
+    .header-sugs-courses span,
+    .header-new-courses span{
         padding: 0;
     }
-    .sugs-courses-container{
+    .sugs-courses-container,
+    .newest-courses-container{
         justify-content: center;
     }
-    .sugs-courses-items{
+    .sugs-courses-items,
+    .new-courses-items{
         padding-right: 20px;
         width: 110%;
         animation: show 0.9s forwards;

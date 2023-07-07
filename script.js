@@ -8,7 +8,6 @@ window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
 window.customElements.define("sug-item", SugsCourses)
 
-
 const loginBtn = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".loginBtn")
@@ -45,11 +44,10 @@ const sugsCoursesItems = document.querySelector(".sugs-courses-items")
 const newCoursesItems = document.querySelector(".new-courses-items")
 const backToTopBtn = document.querySelector(".fa-chevron-up")
 
-
-function styling(popupDivS, overlayS,overflow) {
+function styling(popupDivS, overlayS, overflow) {
   popupDiv.style.display = popupDivS
   overlay.style.display = overlayS
-  document.querySelector('html').style.overflow = overflow
+  document.querySelector("html").style.overflow = overflow
 }
 
 function hambergurStyle(navTrf, widthNav, barsIcon, closeIcon) {
@@ -67,46 +65,62 @@ window.addEventListener("resize", () => {
     .getPropertyValue("width")
     .substring(0, 7)
   if (widthBody >= 900) {
-    hambergurStyle("-100%", 0, "none", "none",0)
+    hambergurStyle("-100%", 0, "none", "none", 0)
     searchStyle("none", "block", "flex", "none")
   } else {
-    hambergurStyle("-100%", 0, "block", "none",'40px')
+    hambergurStyle("-100%", 0, "block", "none", "40px")
     searchStyle("block", "block", "none", "none")
+  }
+  if (window.scrollY > 200) {
+    backToTopBtn.style.display = "flex"
+  } else {
+    backToTopBtn.style.display = "none"
   }
 })
 
 loginTopBar.addEventListener("click", () => {
-  styling("block", "block",'hidden')
+  styling("block", "block", "hidden")
 })
 
 window.addEventListener("scroll", () => {
-    if (window.scrollY >= headerContainer.offsetHeight) {
-      headerContainer.style.position = "fixed"
-      headerContainer.style.top = "0"
-    } else {
-      headerContainer.style.position = "relative"
-    }
-    let height = window.getComputedStyle(sugsCoursesItems).getPropertyValue('height')
-    height = Number(height.match(/\d+/))
-  if (sugsCoursesItems.getBoundingClientRect().top < window.scrollY+window.innerHeight-(height) && sugsCoursesItems.style.opacity != 1) {
-    sugsCoursesItems.style.animation = 'show 1s forwards'
+  if (window.scrollY >= headerContainer.offsetHeight) {
+    headerContainer.style.position = "fixed"
+    headerContainer.style.top = "0"
+  } else {
+    headerContainer.style.position = "relative"
   }
-  if (newCoursesItems.getBoundingClientRect().top+150 < window.scrollY+window.innerHeight-(height) && newCoursesItems.style.opacity != 1) {
-    newCoursesItems.style.animation = 'show 1s forwards'
+  let height = window
+    .getComputedStyle(sugsCoursesItems)
+    .getPropertyValue("height")
+  height = Number(height.match(/\d+/))
+  if (
+    sugsCoursesItems.getBoundingClientRect().top <
+      window.scrollY + window.innerHeight - height &&
+    sugsCoursesItems.style.opacity != 1
+  ) {
+    sugsCoursesItems.style.animation = "show 1s forwards"
+  }
+  if (
+    newCoursesItems.getBoundingClientRect().top + 150 <
+      window.scrollY + window.innerHeight - height &&
+    newCoursesItems.style.opacity != 1
+  ) {
+    newCoursesItems.style.animation = "show 1s forwards"
   }
 
   if (window.scrollY > 200) {
-    if (backToTopBtn.style.display != 'flex') {
-      backToTopBtn.style.display = 'flex'
-    }
-  }else{
-    backToTopBtn.style.display = 'none'
+    backToTopBtn.style.display = "flex"
+    backToTopBtn.style.position = 'foxed'
+    backToTopBtn.style.bottom = '50px'
+
+  } else {
+    backToTopBtn.style.display = "none"
   }
 })
 searchBtn.addEventListener("click", () => {
   searchStyle("block", "none", "none", "flex")
   microphoneBtn.addEventListener("click", () => {
-    microphoneBtn.style.animation = 'doing 1s ease infinite'
+    microphoneBtn.style.animation = "doing 1s ease infinite"
     searchRecognition()
   })
 })
@@ -115,13 +129,13 @@ closeSearchBtn.addEventListener("click", () => {
   searchStyle("none", "block", "flex", "none")
 })
 
-backToTopBtn.addEventListener('click',()=>{
-  window.scrollTo({top:0,behavior:'smooth'})
+backToTopBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" })
 })
 
-
 function searchRecognition() {
-  let SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+  let SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition
   let recognition = new SpeechRecognition()
   recognition.lang = "fa-IR"
   recognition.interimResults = true
@@ -133,7 +147,7 @@ function searchRecognition() {
       .join("")
     if (e.results[0].isFinal) {
       inputSearch.value = transcript
-      microphoneBtn.style.animation = 'doing 1s ease'
+      microphoneBtn.style.animation = "doing 1s ease"
     }
   })
 
@@ -141,9 +155,8 @@ function searchRecognition() {
     console.log("صدایی دریافت نشد !")
   })
   recognition.addEventListener("error", (err) => {
-    alert('به اینترنت دسترسی ندارید!')
-    microphoneBtn.style.animation = 'doing 1s ease'
-
+    alert("به اینترنت دسترسی ندارید!")
+    microphoneBtn.style.animation = "doing 1s ease"
   })
 }
 
@@ -155,14 +168,14 @@ function searchStyle(btnCl, btnSr, hdrI, hdrSB) {
 }
 
 function calCountdown() {
-  let publishDay = '4 august 2023'
+  let publishDay = "4 august 2023"
   let newPubDay = new Date(publishDay)
   let nowDay = new Date()
-  let seconds = (newPubDay - nowDay)/1000
-  let totalDay = Math.floor(seconds/3600/24)
-  let totalHour = Math.floor(seconds/3600)%24
-  let totalMin = Math.floor(seconds/60)%60
-  let totalSec = Math.floor(seconds%60)
+  let seconds = (newPubDay - nowDay) / 1000
+  let totalDay = Math.floor(seconds / 3600 / 24)
+  let totalHour = Math.floor(seconds / 3600) % 24
+  let totalMin = Math.floor(seconds / 60) % 60
+  let totalSec = Math.floor(seconds % 60)
 
   dayElem.innerText = totalDay
   hourElem.innerText = totalHour
@@ -173,10 +186,10 @@ function calCountdown() {
 calCountdown()
 setInterval(() => {
   calCountdown()
-}, 1000);
+}, 1000)
 
-window.addEventListener('click',(e)=>{
-  console.log(e.target);
+window.addEventListener("click", (e) => {
+  console.log(e.target)
 })
 
 export { styling, loginBtn, nav, hambergurStyle }
