@@ -70,8 +70,6 @@ class Header extends HTMLElement {
       }
     })
     barsBtn.addEventListener("click", () => {
-      console.log(Number(window.getComputedStyle(nav).getPropertyValue("width").substring(0,6))+40,
-      );
       hambergurStyle(
         0,
         Number(window.getComputedStyle(nav).getPropertyValue("width").substring(0,6))+40,

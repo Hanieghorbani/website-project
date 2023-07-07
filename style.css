@@ -342,7 +342,7 @@ sug-item{
     }
 
     .cartBox{
-        width: 75%;
+        width: 70%;
         left: 14px;
     }
 }
@@ -382,6 +382,7 @@ sug-item{
         width: 110%;
         animation: show 0.9s forwards;
     }
+
 }
 @font-face {
     font-family: vazir;

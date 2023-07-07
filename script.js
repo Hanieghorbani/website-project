@@ -1,7 +1,10 @@
 import { Header } from "../components/Header/header.js"
 import { PopupLogin } from "../components/popup-login/popup-login.js"
 import { HambergurMenu } from "../components/hambergur-menu/hambergur-menu.js"
-import { SugsCourses } from "../components/sugs-courses/sugs-courses.js"
+import {
+  SugsCourses,
+  itemsObj,
+} from "../components/sugs-courses/sugs-courses.js"
 import { CartItem } from "../components/cart-items/cart-item.js"
 
 window.customElements.define("header-site", Header)
@@ -25,9 +28,6 @@ const jsPic = document.querySelector(".jsPic")
 const headerContainer = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".header-container")
-const cartItem = document
-  .querySelector("cart-item")
-  .shadowRoot.querySelector(".cart-item")
 const barsBtn = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".fa-bars")
@@ -36,8 +36,8 @@ const closeBtn = document
   .shadowRoot.querySelector(".fa-times")
 const loginTopBar = document.querySelector(".fa-user-circle")
 const topBar = document.querySelector(".top-bar")
-const cartBtn = document.querySelector(".fa-shopping-bag")
-const numCart = document.querySelector(".numCart")
+const cartBtns = document.querySelectorAll(".fa-shopping-bag")
+const numCart = document.querySelectorAll(".numCart")
 const searchBtn = document.querySelector(".fa-search")
 const closeSearchBtn = document.querySelector(".fa-close")
 const inputSearch = headerContainer.querySelector(".inputSearch")
@@ -53,8 +53,6 @@ const backToTopBtn = document.querySelector(".fa-chevron-up")
 const cartBox = document.querySelector(".cartBox")
 const cartItemsDiv = document.querySelector(".cart-items-div")
 const totalPriceElem = document.querySelector(".total-price")
-const removeCartItemBtn = cartItem.querySelector(".fa-times")
-
 let totalPrice = 0
 
 function styling(popupDivS, overlayS, overflow) {
@@ -138,15 +136,12 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" })
 })
 
-cartBtn.addEventListener("click", () => {
-  cartBox.classList.toggle("active")
-  
-  calTotalPrice()
-  
+cartBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    cartBox.classList.toggle("active")
+    calTotalPrice()
+  })
 })
-
-
-
 
 function searchRecognition() {
   let SpeechRecognition =
@@ -201,22 +196,42 @@ function calCountdown() {
 function calTotalPrice() {
   totalPrice = 0
   for (const item of cartItemsDiv.children) {
-    totalPrice += Number(item.getAttribute('price'))
-    
+    totalPrice += Number(item.getAttribute("price"))
   }
-  
   totalPriceElem.innerText = `${totalPrice}تومان`
 }
 
+function calNumOfCart() {
+  numCart.forEach((num) => {
+    num.innerText = cartItemsDiv.children.length
+  })
+}
+
 function removeItemFCart(e) {
-  let selectItem = e.target.parentElement.querySelector('.cart-title').innerText
+  let selectItem = e.target.parentElement.querySelector(".cart-title").innerText
   for (const item of cartItemsDiv.children) {
-    if (selectItem == item.getAttribute('title')) {
-       item.remove()
-       console.log(cartItemsDiv);
-       calTotalPrice()
+    if (selectItem == item.getAttribute("title")) {
+      item.remove()
+      calTotalPrice()
+      itemsObj.forEach((itemObj) => {
+        if (itemObj.title == item.getAttribute("title")) {
+          itemsObj.pop(itemObj)
+        }
+      })
     }
-  } 
+  }
+
+  calNumOfCart()
+}
+
+function addItemToCart() {
+  cartItemsDiv.innerHTML = ""
+  itemsObj.forEach((item) => {
+    let temp = `<cart-item img="${item.img}" title="${item.title}" price="${item.price}"></cart-item>`
+    cartItemsDiv.insertAdjacentHTML("beforeend", temp)
+    calNumOfCart()
+    calTotalPrice()
+  })
 }
 
 calCountdown()
@@ -225,10 +240,14 @@ setInterval(() => {
 }, 1000)
 
 window.addEventListener("load", () => {
-  numCart.innerText = cartItemsDiv.children.length
-  // removeCartItemBtn.addEventListener("click", (e) => {
-  //    removeItemFCart(e)
-  // })
+  calNumOfCart()
 })
 
-export { styling, loginBtn, nav, hambergurStyle, removeItemFCart}
+export {
+  styling,
+  loginBtn,
+  nav,
+  hambergurStyle,
+  removeItemFCart,
+  addItemToCart,
+}
