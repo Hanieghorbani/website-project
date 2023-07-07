@@ -25,6 +25,9 @@ const jsPic = document.querySelector(".jsPic")
 const headerContainer = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".header-container")
+const cartItem = document
+  .querySelector("cart-item")
+  .shadowRoot.querySelector(".cart-item")
 const barsBtn = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".fa-bars")
@@ -33,6 +36,8 @@ const closeBtn = document
   .shadowRoot.querySelector(".fa-times")
 const loginTopBar = document.querySelector(".fa-user-circle")
 const topBar = document.querySelector(".top-bar")
+const cartBtn = document.querySelector(".fa-shopping-bag")
+const numCart = document.querySelector(".numCart")
 const searchBtn = document.querySelector(".fa-search")
 const closeSearchBtn = document.querySelector(".fa-close")
 const inputSearch = headerContainer.querySelector(".inputSearch")
@@ -45,6 +50,12 @@ const contents = document.querySelector(".contents")
 const sugsCoursesItems = document.querySelector(".sugs-courses-items")
 const newCoursesItems = document.querySelector(".new-courses-items")
 const backToTopBtn = document.querySelector(".fa-chevron-up")
+const cartBox = document.querySelector(".cartBox")
+const cartItemsDiv = document.querySelector(".cart-items-div")
+const totalPriceElem = document.querySelector(".total-price")
+const removeCartItemBtn = cartItem.querySelector(".fa-times")
+
+let totalPrice = 0
 
 function styling(popupDivS, overlayS, overflow) {
   popupDiv.style.display = popupDivS
@@ -107,7 +118,6 @@ window.addEventListener("scroll", () => {
 
   if (window.scrollY > 200) {
     backToTopBtn.style.display = "flex"
-
   } else {
     backToTopBtn.style.display = "none"
   }
@@ -127,6 +137,16 @@ closeSearchBtn.addEventListener("click", () => {
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" })
 })
+
+cartBtn.addEventListener("click", () => {
+  cartBox.classList.toggle("active")
+  
+  calTotalPrice()
+  
+})
+
+
+
 
 function searchRecognition() {
   let SpeechRecognition =
@@ -178,13 +198,37 @@ function calCountdown() {
   secElem.innerText = totalSec
 }
 
+function calTotalPrice() {
+  totalPrice = 0
+  for (const item of cartItemsDiv.children) {
+    totalPrice += Number(item.getAttribute('price'))
+    
+  }
+  
+  totalPriceElem.innerText = `${totalPrice}تومان`
+}
+
+function removeItemFCart(e) {
+  let selectItem = e.target.parentElement.querySelector('.cart-title').innerText
+  for (const item of cartItemsDiv.children) {
+    if (selectItem == item.getAttribute('title')) {
+       item.remove()
+       console.log(cartItemsDiv);
+       calTotalPrice()
+    }
+  } 
+}
+
 calCountdown()
 setInterval(() => {
   calCountdown()
 }, 1000)
 
-window.addEventListener("click", (e) => {
-  console.log(e.target)
+window.addEventListener("load", () => {
+  numCart.innerText = cartItemsDiv.children.length
+  // removeCartItemBtn.addEventListener("click", (e) => {
+  //    removeItemFCart(e)
+  // })
 })
 
-export { styling, loginBtn, nav, hambergurStyle }
+export { styling, loginBtn, nav, hambergurStyle, removeItemFCart}
