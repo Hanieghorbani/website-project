@@ -53,10 +53,15 @@ const backToTopBtn = document.querySelector(".fa-chevron-up")
 const cartBox = document.querySelector(".cartBox")
 const cartItemsDiv = document.querySelector(".cart-items-div")
 const totalPriceElem = document.querySelector(".total-price")
+const nextCourBTn = document.querySelector(".fa-chevron-right")
+const prevCourBtn = document.querySelector(".fa-chevron-left")
+const newItem = document.querySelector(".items-div sug-item")
+const slider = document.querySelector(".items-div")
 let totalPrice = 0
 
 function styling(popupDivS, overlayS, overflow) {
   popupDiv.style.display = popupDivS
+  popupDiv.style.top = `${window.scrollY}px`
   overlay.style.display = overlayS
   document.querySelector("html").style.overflow = overflow
 }
@@ -106,13 +111,13 @@ window.addEventListener("scroll", () => {
   ) {
     sugsCoursesItems.style.animation = "show 1s forwards"
   }
-  if (
-    newCoursesItems.getBoundingClientRect().top + 150 <
-      window.scrollY + window.innerHeight - height &&
-    newCoursesItems.style.opacity != 1
-  ) {
-    newCoursesItems.style.animation = "show 1s forwards"
-  }
+  // if (
+  //   newCoursesItems.getBoundingClientRect().top + 150 <
+  //     window.scrollY + window.innerHeight - height &&
+  //   newCoursesItems.style.opacity != 1
+  // ) {
+  //   newCoursesItems.style.animation = "show 1s forwards"
+  // }
 
   if (window.scrollY > 200) {
     backToTopBtn.style.display = "flex"
@@ -136,6 +141,44 @@ backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" })
 })
 
+const widthItems = window.getComputedStyle(newItem).getPropertyValue("width")
+let dir
+nextCourBTn.addEventListener("click", () => {
+  dir = -1
+  newCoursesItems.style.justifyContent = `flex-start`
+ slider.style.transform = `translate(-${widthItems})`
+})
+
+prevCourBtn.addEventListener("click", () => { 
+  if (dir == -1) {
+    dir = 1
+    slider.appendChild(slider.firstElementChild)
+  }
+  newCoursesItems.style.justifyContent = `flex-end`
+  slider.style.transform = `translate(${widthItems})`
+})
+
+ slider.addEventListener('transitionend',()=>{
+  if (dir == 1) {
+    dir = -1
+    slider.appendChild(slider.lastElementChild)
+  }else{
+    slider.appendChild(slider.firstElementChild)
+  }
+  slider.style.transform = 'translate(0)'
+  slider.style.transition = 'none'
+   
+  setTimeout(()=>{
+    slider.style.transition = 'transform 0.2s linear'
+  })
+ })
+
+
+function moveItem(dir) {
+  for (const item of slider.children) {
+     item.style.transform = `translateX(${dir}${widthItems})`
+  }
+}
 cartBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     cartBox.classList.toggle("active")

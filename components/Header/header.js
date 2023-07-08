@@ -65,6 +65,7 @@ class Header extends HTMLElement {
       dropDownMenu.style.display = "none"
     })
     loginBtn.addEventListener("click", (e) => {
+      console.log(window.scrollY);
       if (e.target.innerText == "ورود و ثبت نام") {
         styling("block", "block", "hidden")
       }

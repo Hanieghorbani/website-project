@@ -193,7 +193,8 @@ body {
 }
 
 .sugs-courses-items,
-.new-courses-items {
+.items-div,
+.new-courses-items{
     margin-top: 40px;
     width: 90%;
     display: flex;
@@ -204,12 +205,66 @@ body {
     transform: translateX(-120%);
 }
 
+.new-courses-items{
+    opacity: 1;
+    transform: translate(0,0);
+    display: flex;
+    justify-content: center;
+}
+
+.items-div{
+    width: 100%;
+    opacity: 1;
+    overflow-x: hidden;
+    flex-wrap: nowrap;
+    padding: 10px 22px;
+}
+
+.items-div,
+.new-courses-items{
+    display: flex;
+    transition: transform 0.2s linear;
+    transform: translateX(0);
+}
+
+
+.items-div sug-item{
+    width: 22%;
+    margin-left: 40px;
+    transition: all 0.5s ease;
+}
+
+.icons-change{
+    direction: ltr;
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    align-items: center;
+}
+
+.icons-change i{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: gray;
+    color: white;
+    font-size: 20px;
+    z-index: 1000;
+}
+
 
 sug-item{
     width: 22%;
 }
 
-/* استایل کارت باکس */
 
 .fa-chevron-up{
     font-size: 20px;
