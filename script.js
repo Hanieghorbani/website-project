@@ -57,7 +57,8 @@ const nextCourBTn = document.querySelector(".fa-chevron-right")
 const prevCourBtn = document.querySelector(".fa-chevron-left")
 const newItem = document.querySelector(".items-div sug-item")
 const slider = document.querySelector(".items-div")
-let totalPrice = 0
+const comments = document.querySelector(".comments")
+const dotsContainer = document.querySelector(".dots")
 
 function styling(popupDivS, overlayS, overflow) {
   popupDiv.style.display = popupDivS
@@ -111,13 +112,13 @@ window.addEventListener("scroll", () => {
   ) {
     sugsCoursesItems.style.animation = "show 1s forwards"
   }
-  // if (
-  //   newCoursesItems.getBoundingClientRect().top + 150 <
-  //     window.scrollY + window.innerHeight - height &&
-  //   newCoursesItems.style.opacity != 1
-  // ) {
-  //   newCoursesItems.style.animation = "show 1s forwards"
-  // }
+  if (
+    newCoursesItems.getBoundingClientRect().top + 150 <
+      window.scrollY + window.innerHeight - height &&
+    newCoursesItems.style.opacity != 1
+  ) {
+    newCoursesItems.style.animation = "show 1s forwards"
+  }
 
   if (window.scrollY > 200) {
     backToTopBtn.style.display = "flex"
@@ -173,12 +174,6 @@ prevCourBtn.addEventListener("click", () => {
   })
  })
 
-
-function moveItem(dir) {
-  for (const item of slider.children) {
-     item.style.transform = `translateX(${dir}${widthItems})`
-  }
-}
 cartBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
     cartBox.classList.toggle("active")
@@ -236,6 +231,7 @@ function calCountdown() {
   secElem.innerText = totalSec
 }
 
+let totalPrice = 0
 function calTotalPrice() {
   totalPrice = 0
   for (const item of cartItemsDiv.children) {
@@ -285,6 +281,25 @@ setInterval(() => {
 window.addEventListener("load", () => {
   calNumOfCart()
 })
+
+let commentWidth
+for (const comment of comments.children) {
+  commentWidth = window.getComputedStyle(comment).getPropertyValue('width').substring(0,7)
+  const newDot = document.createElement('span')
+  newDot.classList.add('dot')
+  newDot.setAttribute('num' , comment.id)
+  newDot.addEventListener('click',(e)=>{
+    let numOfDot = Number(e.target.getAttribute('num'))
+    comments.style.transform = `translateX(-${(numOfDot * commentWidth)}px)`
+    
+    for (const dot of document.querySelectorAll('.dot')) {
+      dot.style.opacity = '0.5'
+    }
+    e.target.style.opacity = '1'
+  })
+  
+  dotsContainer.appendChild(newDot)
+}
 
 export {
   styling,
