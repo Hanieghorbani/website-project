@@ -62,7 +62,7 @@ const dotsContainer = document.querySelector(".dots")
 
 function styling(popupDivS, overlayS, overflow) {
   popupDiv.style.display = popupDivS
-  popupDiv.style.top = `${window.scrollY}px`
+  popupDiv.style.top = `${window.scrollY + 40}px`
   overlay.style.display = overlayS
   document.querySelector("html").style.overflow = overflow
 }
@@ -147,11 +147,11 @@ let dir
 nextCourBTn.addEventListener("click", () => {
   dir = -1
   newCoursesItems.style.justifyContent = `flex-start`
- slider.style.transform = `translate(-${widthItems})`
+  slider.style.transform = `translate(-${widthItems})`
 })
 
-prevCourBtn.addEventListener("click", () => { 
-  if (dir == -1) {
+prevCourBtn.addEventListener("click", () => {
+  if (dir === -1) {
     dir = 1
     slider.appendChild(slider.firstElementChild)
   }
@@ -159,20 +159,24 @@ prevCourBtn.addEventListener("click", () => {
   slider.style.transform = `translate(${widthItems})`
 })
 
- slider.addEventListener('transitionend',()=>{
-  if (dir == 1) {
-    dir = -1
-    slider.appendChild(slider.lastElementChild)
-  }else{
-    slider.appendChild(slider.firstElementChild)
-  }
-  slider.style.transform = 'translate(0)'
-  slider.style.transition = 'none'
-   
-  setTimeout(()=>{
-    slider.style.transition = 'transform 0.2s linear'
-  })
- })
+slider.addEventListener(
+  "transitionend",
+  () => {
+    if (dir === 1) {
+      
+      slider.append(slider.lastElementChild)
+    } else {
+      slider.appendChild(slider.firstElementChild)
+    }
+    slider.style.transform = "translate(0)"
+    slider.style.transition = "none"
+
+    setTimeout(() => {
+      slider.style.transition = "all 300ms linear"
+    })
+  },
+  false
+)
 
 cartBtns.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -284,22 +288,29 @@ window.addEventListener("load", () => {
 
 let commentWidth
 for (const comment of comments.children) {
-  commentWidth = window.getComputedStyle(comment).getPropertyValue('width').substring(0,7)
-  const newDot = document.createElement('span')
-  newDot.classList.add('dot')
-  newDot.setAttribute('num' , comment.id)
-  newDot.addEventListener('click',(e)=>{
-    let numOfDot = Number(e.target.getAttribute('num'))
-    comments.style.transform = `translateX(-${(numOfDot * commentWidth)}px)`
-    
-    for (const dot of document.querySelectorAll('.dot')) {
-      dot.style.opacity = '0.5'
+  commentWidth = window
+    .getComputedStyle(comment)
+    .getPropertyValue("width")
+    .substring(0, 7)
+  const newDot = document.createElement("span")
+  newDot.classList.add("dot")
+  newDot.setAttribute("num", comment.id)
+  newDot.addEventListener("click", (e) => {
+    let numOfDot = Number(e.target.getAttribute("num"))
+    comments.style.transform = `translateX(-${numOfDot * commentWidth}px)`
+
+    for (const dot of document.querySelectorAll(".dot")) {
+      dot.style.opacity = "0.5"
     }
-    e.target.style.opacity = '1'
+    e.target.style.opacity = "1"
   })
-  
+
   dotsContainer.appendChild(newDot)
 }
+
+comments.addEventListener("animationend", () => {
+  console.log("11")
+})
 
 export {
   styling,

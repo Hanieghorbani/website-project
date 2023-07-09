@@ -366,6 +366,8 @@ sug-item{
     width: 100%;
     display: -webkit-inline-box;
     transition: transform 0.5s ease;
+    transform: translate3d(0,0,0) translateX(0);
+    animation: moveSliderComments 5s linear infinite;
 }
 
 .comment{
@@ -375,6 +377,7 @@ sug-item{
     border: 1px solid rgb(188, 188, 188);
     box-shadow: 1px 1px 3px gray;
     border-radius: 10px;
+
 }
 
 .comment img{
@@ -413,6 +416,93 @@ sug-item{
     opacity: 0.5;
     transition: opacity 0.5s ease;
 }
+
+/* برای فوتر */
+.footer-container{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+    border-top: 10px solid var(--color);
+}
+
+.footer-contents{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.footer-container h4{
+    color: var(--color2);
+}
+
+.icons-footer{
+    list-style: none;
+}
+
+.connect-footer p,
+.ass-footer p{
+  margin: 10px 20px;
+  cursor: pointer;
+}
+
+.connect-footer p:hover,
+.ass-footer p:hover{
+    color: var(--color);
+}
+
+.connect-footer p i{
+    margin-left: 10px;
+}
+
+.icons-footer a{
+    list-style: none;
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.icons-footer a:hover{
+    color: var(--color2);
+}
+
+.more-info-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   width: 49%;
+   margin-top: -80px;
+}
+
+.more-info-footer p{
+    font-size: 15px;
+}
+
+.more-info-footer div{
+    margin-top: 20px;
+}
+
+.more-info-footer div img{
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+
+
+
+/* @keyframes moveSliderComments{
+    100%{
+        transform: translateX(-300%);
+    }
+} */
 
 
 @keyframes show {
