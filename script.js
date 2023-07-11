@@ -1,17 +1,19 @@
 import { Header } from "../components/Header/header.js"
 import { PopupLogin } from "../components/popup-login/popup-login.js"
 import { HambergurMenu } from "../components/hambergur-menu/hambergur-menu.js"
-import {
-  SugsCourses,
-  itemsObj,
-} from "../components/sugs-courses/sugs-courses.js"
+import {SugsCourses,itemsObj} from "../components/sugs-courses/sugs-courses.js"
 import { CartItem } from "../components/cart-items/cart-item.js"
+import { Footer } from "../components/footer/footer.js"
+import { TopBar } from "../components/topBar/topBar.js"
 
-window.customElements.define("header-site", Header)
+ window.customElements.define("header-site", Header)
 window.customElements.define("login-site", PopupLogin)
 window.customElements.define("hambergur-menu", HambergurMenu)
 window.customElements.define("sug-item", SugsCourses)
 window.customElements.define("cart-item", CartItem)
+window.customElements.define("footer-site", Footer)
+window.customElements.define("site-topbar", TopBar)
+
 
 const loginBtn = document
   .querySelector("header-site")
@@ -34,12 +36,10 @@ const barsBtn = document
 const closeBtn = document
   .querySelector("header-site")
   .shadowRoot.querySelector(".fa-times")
-const loginTopBar = document.querySelector(".fa-user-circle")
-const topBar = document.querySelector(".top-bar")
-const cartBtns = document.querySelectorAll(".fa-shopping-bag")
-const numCart = document.querySelectorAll(".numCart")
-const searchBtn = document.querySelector(".fa-search")
-const closeSearchBtn = document.querySelector(".fa-close")
+const topBar = document.querySelector("site-topbar").shadowRoot.querySelector('.top-bar')
+const numCart = document.querySelector('site-topbar').shadowRoot.querySelectorAll(".numCart")
+const searchBtn = document.querySelector('site-topbar').shadowRoot.querySelector(".fa-search")
+const closeSearchBtn = document.querySelector('site-topbar').shadowRoot.querySelector(".fa-close")
 const inputSearch = headerContainer.querySelector(".inputSearch")
 const microphoneBtn = headerContainer.querySelector(".fa-microphone")
 const dayElem = document.querySelector(".dayElem")
@@ -90,10 +90,6 @@ window.addEventListener("resize", () => {
   }
 })
 
-loginTopBar.addEventListener("click", () => {
-  styling("block", "block", "hidden")
-})
-
 window.addEventListener("scroll", () => {
   if (window.scrollY >= headerContainer.offsetHeight) {
     headerContainer.style.position = "fixed"
@@ -126,17 +122,6 @@ window.addEventListener("scroll", () => {
     backToTopBtn.style.display = "none"
   }
 })
-searchBtn.addEventListener("click", () => {
-  searchStyle("block", "none", "none", "flex")
-  microphoneBtn.addEventListener("click", () => {
-    microphoneBtn.style.animation = "doing 1s ease infinite"
-    searchRecognition()
-  })
-})
-
-closeSearchBtn.addEventListener("click", () => {
-  searchStyle("none", "block", "flex", "none")
-})
 
 backToTopBtn.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" })
@@ -144,18 +129,20 @@ backToTopBtn.addEventListener("click", () => {
 
 const widthItems = window.getComputedStyle(newItem).getPropertyValue("width")
 let dir
+let ord = 0
 nextCourBTn.addEventListener("click", () => {
   dir = -1
-  newCoursesItems.style.justifyContent = `flex-start`
+  // newCoursesItems.style.justifyContent = `flex-start`
   slider.style.transform = `translate(-${widthItems})`
+  
 })
 
 prevCourBtn.addEventListener("click", () => {
-  if (dir === -1) {
     dir = 1
-    slider.appendChild(slider.firstElementChild)
-  }
-  newCoursesItems.style.justifyContent = `flex-end`
+    // slider.lastElementChild.style.order = '-1'
+    // slider.appendChild(slider.lastElementChild)
+    slider.insertAdjacentElement('afterbegin',slider.lastElementChild)
+  //  newCoursesItems.style.justifyContent = `flex-end`
   slider.style.transform = `translate(${widthItems})`
 })
 
@@ -163,8 +150,7 @@ slider.addEventListener(
   "transitionend",
   () => {
     if (dir === 1) {
-      
-      slider.append(slider.lastElementChild)
+      slider.insertAdjacentElement('afterbegin',slider.firstElementChild)
     } else {
       slider.appendChild(slider.firstElementChild)
     }
@@ -172,18 +158,12 @@ slider.addEventListener(
     slider.style.transition = "none"
 
     setTimeout(() => {
-      slider.style.transition = "all 300ms linear"
+      slider.style.transition = "all 1ms"
     })
   },
   false
 )
 
-cartBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    cartBox.classList.toggle("active")
-    calTotalPrice()
-  })
-})
 
 function searchRecognition() {
   let SpeechRecognition =
@@ -308,10 +288,6 @@ for (const comment of comments.children) {
   dotsContainer.appendChild(newDot)
 }
 
-comments.addEventListener("animationend", () => {
-  console.log("11")
-})
-
 export {
   styling,
   loginBtn,
@@ -319,4 +295,8 @@ export {
   hambergurStyle,
   removeItemFCart,
   addItemToCart,
+  searchStyle,
+  microphoneBtn,
+  searchRecognition,
+  cartBox,calTotalPrice,calNumOfCart
 }

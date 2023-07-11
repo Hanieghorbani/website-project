@@ -48,42 +48,6 @@ body {
     z-index: 700;
 }
 
-.top-bar {
-    background-color: black;
-    color: rgb(171, 171, 171);
-    direction: ltr;
-    transition: transform 0.5s ease;
-    padding: 0 30px;
-}
-
-.top-bar-row {
-    display: flex;
-}
-
-.top-bar-items {
-    display: block;
-}
-
-.top-bar-items-mobile {
-    display: none;
-}
-
-.top-bar-items ul,
-.top-bar-items-mobile ul {
-    display: flex;
-    list-style: none;
-    margin: 10px;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 12px;
-    margin-left: 50px;
-}
-
-.top-bar-items ul li,
-.top-bar-items-mobile ul li {
-    margin-right: 30px;
-    cursor: pointer;
-}
 
 .cart {
     position: relative;
@@ -96,11 +60,6 @@ body {
     font-size: 10px;
     color: white;
     cursor: default;
-}
-
-
-.fa-close {
-    display: none;
 }
 
 .imgBox {
@@ -203,9 +162,12 @@ body {
     align-items: center;
     opacity: 0;
     transform: translateX(-120%);
+    
 }
 
 .new-courses-items{
+    margin-right: 82px;
+    direction: ltr;
     opacity: 1;
     transform: translate(0,0);
     display: flex;
@@ -223,13 +185,13 @@ body {
 .items-div,
 .new-courses-items{
     display: flex;
-    transition: transform 0.2s linear;
+    transition: all 1ms;
     transform: translateX(0);
 }
 
 
 .items-div sug-item{
-    width: 22%;
+    width: 20%;
     margin-left: 40px;
     transition: all 0.5s ease;
 }
@@ -238,10 +200,10 @@ body {
     direction: ltr;
     position: absolute;
     top: 50%;
-    left: 5%;
+    left:0;
     display: flex;
     justify-content: space-between;
-    width: 90%;
+    width: 105%;
     align-items: center;
 }
 
@@ -263,7 +225,14 @@ body {
 
 sug-item{
     width: 22%;
+    display: flex;
+    order: 0;
 }
+
+/* .items-div :first-child{
+    display: flex;
+    order: 1;
+} */
 
 
 .fa-chevron-up{
@@ -286,7 +255,7 @@ sug-item{
 .cartBox{
     position: absolute;
     top: 40px;
-    left: 34px;
+    left: 75px;
     width: 20%;
     background-color: white;
     display: none;
@@ -417,87 +386,6 @@ sug-item{
     transition: opacity 0.5s ease;
 }
 
-/* برای فوتر */
-.footer-container{
-    background-color: black;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding-top: 70px;
-    border-top: 10px solid var(--color);
-}
-
-.footer-contents{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-}
-
-.footer-container h4{
-    color: var(--color2);
-}
-
-.icons-footer{
-    list-style: none;
-}
-
-.connect-footer p,
-.ass-footer p{
-  margin: 10px 20px;
-  cursor: pointer;
-}
-
-.connect-footer p:hover,
-.ass-footer p:hover{
-    color: var(--color);
-}
-
-.connect-footer p i{
-    margin-left: 10px;
-}
-
-.icons-footer a{
-    list-style: none;
-    color: white;
-    margin-right: 15px;
-    font-size: 20px;
-}
-
-.icons-footer a:hover{
-    color: var(--color2);
-}
-
-.more-info-footer{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-   width: 49%;
-   margin-top: -80px;
-}
-
-.more-info-footer p{
-    font-size: 15px;
-}
-
-.more-info-footer div{
-    margin-top: 20px;
-}
-
-.more-info-footer div img{
-    width: 40px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 10px;
-}
-
-
-
-
-
 /* @keyframes moveSliderComments{
     100%{
         transform: translateX(-300%);
@@ -559,6 +447,28 @@ sug-item{
         width: 70%;
         left: 14px;
     }
+
+    .items-div sug-item{
+        width: 90%;
+        margin-left: 50px;
+    }
+
+    .icons-change{
+        left: 3%;
+    }
+
+    .comments-container{
+        width: 80%;
+    }
+
+    .comment{
+        width: 100%;
+        margin-right: 10px;
+    }
+
+    .dots{
+        width: 30%;
+    }
 }
 
 @media screen and (max-width: 600px){
@@ -595,6 +505,25 @@ sug-item{
         padding-right: 20px;
         width: 110%;
         animation: show 0.9s forwards;
+    }
+
+    .items-div sug-item{
+        margin-left: 60px;
+    }
+
+
+    .comments-container{
+        width: 90%;
+    }
+
+    .comment p {
+        font-size: 13px;
+        padding: 20px;
+    }
+
+    .comment img{
+        width: 80px;
+        height: 80px;
     }
 
 }

@@ -1,4 +1,5 @@
 import { styling, nav, hambergurStyle } from "../../script.js"
+
 const template = document.createElement("template")
 template.innerHTML = `
 <link rel="stylesheet" href="all.css" />
@@ -6,7 +7,7 @@ template.innerHTML = `
 <div class='header-container'>
    <div class="header-row">
       <div class="header-items">
-      <img class="logo" src="logo.png" />
+      <img class="logo" src="/img/logo.png" />
         <ul class="ulHeader">
           <li>صفحه اصلی</li>
           <li class="coursesMenu">
@@ -28,7 +29,7 @@ template.innerHTML = `
         </button>
    </div> 
    <div class="header-items-mobile"> 
-         <img class="logo" src="logo.png" />
+         <img class="logo" src="/img/logo.png" />
          <div class="menu-icons"><i class="fa fa-bars"></i>
            <i class="fa fa-times"></i>
          </div>
@@ -43,7 +44,6 @@ template.innerHTML = `
    </div>
  </div>
 `
-
 class Header extends HTMLElement {
   constructor() {
     super()
@@ -65,7 +65,6 @@ class Header extends HTMLElement {
       dropDownMenu.style.display = "none"
     })
     loginBtn.addEventListener("click", (e) => {
-      console.log(window.scrollY);
       if (e.target.innerText == "ورود و ثبت نام") {
         styling("block", "block", "hidden")
       }
