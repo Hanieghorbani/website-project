@@ -1,0 +1,157 @@
+
+.nav{
+    width: 25%;
+    background-color: rgb(44, 44, 44);
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    transform: translateX(-100%);
+    transition:  0.5s ease;
+    padding: 20px;
+    font-family: vazir;
+    margin-right: 1px;
+    z-index: 800;
+}
+
+.contentNav{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: rgb(170, 170, 170);
+    font-size: 15px;
+}
+
+
+.searchBox{
+  position: relative;
+  margin-left: 10px;
+}
+
+.searchBox >input{
+    background-color: rgb(19, 19, 19);
+    font-family: vazir;
+    padding: 5px;
+    outline: none;
+    border: none;
+    width: 100%;
+    color: rgb(170, 170, 170);
+    border-radius:5px;
+}
+
+.searchBox i{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.cart{
+    margin: 35px 20px 20px 20px;
+    cursor: pointer;
+}
+
+.cart > i{
+    margin-left: 10px;
+}
+
+.contentNav > ul{
+    border-top: 1px solid rgb(59, 59, 59);
+    padding-top: 18px;
+    list-style: none;
+    padding-right: 4px;
+}
+
+.contentNav ul li{
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.coursesMenu:hover{
+  cursor: default;
+}
+
+.title-courses{
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dropDownMenu{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.dropDownMenu> span{
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.dropDownMenu.active{
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    margin-right: 5px;
+    padding-right: 20px;
+    border-right: 1px solid rgb(85, 85, 85);
+}
+.dropDownMenu.active .fa-chevron-down{
+    transform: rotate(180deg)
+}
+
+@media screen and (max-width: 900px) {
+    .nav{
+        width: 57%;
+    }
+    .contentNav{
+        margin-right: -7px;
+        font-size: xx-small;
+    } 
+    .contentNav ul{
+        font-size: 13px;
+    }
+    .searchBox > input{
+        width: 100%;
+        padding: 8px 13px;
+        font-size: 13px;
+    }
+    .searchBox i {
+        position: absolute;
+        top: 11px;
+        left: -3px;
+        font-size: 14px;
+    }
+    .searchBox >input::placeholder{
+        font-size: 15px;
+    }
+
+    .dropDownMenu.active{
+        font-size: 13px;
+        padding-right: 10px;
+        margin: 10px 9px;
+    }
+
+    .cart{
+        margin:10px 0;
+        font-size: 15px;
+    }
+
+    .cart i{
+        margin-left: 3px;
+    }
+
+    .title-courses i{
+        font-size: 7px;
+    }
+    .title-courses i{
+        font-size: 15px;
+    }
+    
+}
+
+@font-face {
+    font-family: vazir;
+    src: url(Vazir.woff);
+}

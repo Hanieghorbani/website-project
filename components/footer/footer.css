@@ -1,0 +1,130 @@
+.footer-container{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 70px;
+    border-top: 10px solid var(--color);
+}
+
+.footer-contents{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.connect-footer h4,
+.ass-footer h4{
+    color: var(--color2);
+}
+
+.icons-footer{
+    list-style: none;
+}
+
+.connect-footer p,
+.ass-footer p{
+  margin: 10px 20px;
+  cursor: pointer;
+}
+
+.connect-footer p:hover,
+.ass-footer p:hover{
+    color: var(--color);
+}
+
+.connect-footer p i{
+    margin-left: 10px;
+}
+
+.icons-footer a{
+    list-style: none;
+    color: white;
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+.icons-footer a:hover{
+    color: var(--color2);
+}
+
+.more-info-footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   width: 49%;
+   margin-top: -80px;
+}
+
+.more-info-footer p{
+    font-size: 15px;
+    line-height: 3;
+}
+
+.more-info-footer div{
+    margin-top: 20px;
+}
+
+.more-info-footer div img{
+    width: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+@media screen and (max-width: 900px) {
+   .footer-contents{
+    width: 90%;
+   }
+
+   .more-info-footer{
+    margin: 50px 0;
+    width: 100%;
+    text-align: center;
+   }
+
+   .more-info-footer p {
+    /* line-height: 2px; */
+   }
+
+   .more-info-footer div img{
+    height: 40px;
+    margin-top: -7px;
+   }
+}
+
+
+@media screen and (max-width: 600px) {
+    .footer-contents{
+     width: 90%;
+     flex-direction: column;
+    }
+
+    .main-footer{
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin-top: -40px;
+    }
+
+    .icons-footer{
+
+    }
+ 
+    .more-info-footer div{
+       display: none;
+    }
+ 
+    .more-info-footer p {
+
+    }
+ 
+    .more-info-footer div img{
+
+    }
+ }

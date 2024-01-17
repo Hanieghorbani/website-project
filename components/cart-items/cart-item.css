@@ -1,0 +1,39 @@
+
+.cart-item{
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    color: var(--color-gray);
+    padding:0 10px;
+}
+
+.cart-item i{
+    font-size: 20px;
+    color: red;
+    cursor: pointer;
+}
+
+.cart-item img{
+    width : 34%;
+    margin: 0 10px;
+}
+
+.cart-item-info{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+    .cart-item img{
+       width: 20%;
+    }
+    .cart-item-info{
+        font-size: 10px;
+    }
+}
+

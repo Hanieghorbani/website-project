@@ -1,0 +1,57 @@
+.top-bar {
+    background-color: black;
+    color: rgb(171, 171, 171);
+    direction: ltr;
+    transition: transform 0.5s ease;
+    padding: 0 30px;
+}
+
+.top-bar-row {
+    display: flex;
+}
+
+.top-bar-items {
+    display: block;
+}
+
+.fa-close {
+    display: none;
+}
+
+.top-bar-items-mobile {
+    display: none;
+}
+
+.top-bar-items ul,
+.top-bar-items-mobile ul {
+    display: flex;
+    list-style: none;
+    margin: 10px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-left: 50px;
+}
+
+.top-bar-items ul li,
+.top-bar-items-mobile ul li {
+    margin-right: 30px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+    .top-bar-items {
+        display: none;
+    }
+    .top-bar-items-mobile {
+        display: block;
+    }
+    .top-bar-items-mobile ul{
+        margin-left: -12px;
+    }
+}
+
+@font-face {
+    font-family: vazir;
+    src: url(Vazir.woff);
+}
